@@ -8,7 +8,7 @@ resource "aws_instance" "nat_instance" {
 
   tags = merge(
     {
-      Name = "nat-instance"
+      Name  = join("-", [var.name, "nat-instance"])
       Type = "NAT Instance"
     },
     var.default_tags,
@@ -42,7 +42,7 @@ resource "aws_security_group" "nat_instance_sg" {
 
   tags = merge(
     {
-      Name = "nat-instance-sg"
+      Name  = join("-", [var.name, "nat-instance-sg"])
       Type = "NAT Instance"
     },
     var.default_tags,
@@ -60,7 +60,7 @@ resource "aws_subnet" "nat_subnet" {
 
   tags = merge(
     {
-      Name = "nat-instance-subnet"
+      Name  = join("-", [var.name, "nat-instance-subnet"])
       Type = "NAT Instance"
     },
     var.default_tags,
@@ -103,7 +103,7 @@ resource "aws_network_acl" "nat_nacl" {
 
   tags = merge(
     {
-      Name = "nat-instance-nacl"
+      Name  = join("-", [var.name, "nat-instance-nacl"])
       Type = "NAT Instance"
     },
     var.default_tags,

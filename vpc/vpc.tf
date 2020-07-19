@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = merge(
     {
-      join("-", [var.name, "igw"])
+      Name = join("-", [var.name, "igw"])
     },
     var.default_tags,
     var.global_tags

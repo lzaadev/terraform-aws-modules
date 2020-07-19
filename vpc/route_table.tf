@@ -4,7 +4,7 @@ resource "aws_default_route_table" "default_rt" {
 
   tags = merge(
     {
-      Name  = "local-route-table"
+      Name  = join("-", [var.name, "local-route-table"])
       Route = "Local"
     },
     var.default_tags,
@@ -28,7 +28,7 @@ resource "aws_route_table" "ext_route_table" {
 
   tags = merge(
     {
-      Name  = "igw-route-table"
+      Name  = join("-", [var.name, "igw-route-table"])
       Route = "Internet Gateway"
     },
     var.default_tags,
@@ -49,7 +49,7 @@ resource "aws_route_table" "int_route_table" {
 
   tags = merge(
     {
-      Name  = "nat-route-table"
+      Name  = join("-", [var.name, "nat-route-table"])
       Route = "NAT Gateway"
     },
     var.default_tags,

@@ -2,7 +2,7 @@
 variable "name" {
   description = "Prefix that will be added to all resources as identifier."
   type        = string
-  default     = ""
+  default     = "terraform"
 }
 
 variable "my_ip" {

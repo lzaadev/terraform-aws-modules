@@ -22,7 +22,7 @@ resource "aws_default_network_acl" "default_nacl" {
 
   tags = merge(
     {
-      Name = "default-nacl"
+      Name  = join("-", [var.name, "default-nacl"])
       Type = "Default NACL"
     },
     var.default_tags,
@@ -71,7 +71,7 @@ resource "aws_network_acl" "public_nacl" {
 
   tags = merge(
     {
-      Name = "public-nacl"
+      Name  = join("-", [var.name, "public-nacl"])
       Type = "Public NACL"
     },
     var.default_tags,
@@ -120,7 +120,7 @@ resource "aws_network_acl" "private_nacl" {
 
   tags = merge(
     {
-      Name = "private-nacl"
+      Name  = join("-", [var.name, "private-nacl"])
       Type = "Private NACL"
     },
     var.default_tags,
@@ -169,7 +169,7 @@ resource "aws_network_acl" "db_nacl" {
 
   tags = merge(
     {
-      Name = "database-nacl"
+      Name  = join("-", [var.name, "database-nacl"])
       Type = "Database NACL"
     },
     var.default_tags,
