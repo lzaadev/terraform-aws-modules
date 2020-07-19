@@ -50,18 +50,12 @@ resource "aws_security_group" "nat_instance_sg" {
   )
 }
 
-## Random AZ
-resource "random_shuffle" "az" {
-  input        = [for az in var.azs : az]
-  result_count = 1
-}
-
 ## NAT Instance Subnet
 resource "aws_subnet" "nat_subnet" {
   count                   = var.enable_nat_instance && var.nat_subnet != "" ? 1 : 0
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.nat_subnet
-  availability_zone       = var.nat_az != "" ? var.nat_az : random_shuffle.az.result[0]
+  availability_zone       = var.nat_az != "" ? var.nat_az : var.azs[0]
   map_public_ip_on_launch = true
 
   tags = merge(
