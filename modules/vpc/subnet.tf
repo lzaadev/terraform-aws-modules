@@ -8,7 +8,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = merge(
     {
-      Name = join("-", "public-subnet", count.index])
+      Name = join("-", ["public-subnet", count.index])
       Type = "Public Subnet"
     },
     var.default_tags,
@@ -25,7 +25,7 @@ resource "aws_subnet" "intra_subnet" {
 
   tags = merge(
     {
-      Name = join("-", "intra-subnet", count.index])
+      Name = join("-", ["intra-subnet", count.index])
       Type = "Internal Subnet"
     },
     var.default_tags,
@@ -42,7 +42,7 @@ resource "aws_subnet" "private_subnet" {
 
   tags = merge(
     {
-      Name = join("-", "private-subnet", count.index])
+      Name = join("-", ["private-subnet", count.index])
       Type = "Private Subnet"
     },
     var.default_tags,
@@ -59,7 +59,7 @@ resource "aws_subnet" "db_subnet" {
 
   tags = merge(
     {
-      Name = join("-", "db-subnet", count.index])
+      Name = join("-", ["db-subnet", count.index])
       Type = "Database Subnet"
     },
     var.default_tags,
