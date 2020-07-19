@@ -6,8 +6,7 @@ resource "aws_vpc" "vpc" {
 
   tags = merge(
     {
-      Name = "vpc"
-      Type = "NAT Instance"
+      Name = join("-", [var.name, "vpc"])
     },
     var.default_tags,
     var.global_tags
@@ -20,8 +19,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = merge(
     {
-      Name = "nat-instance-sg"
-      Type = "NAT Instance"
+      join("-", [var.name, "igw"])
     },
     var.default_tags,
     var.global_tags
