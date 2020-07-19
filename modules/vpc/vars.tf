@@ -1,13 +1,4 @@
 ### General Variables ###
-variable "project_name" {
-  description = "Name of you project. Project name will be added as prefix for Name tag. If not specified, 'tf' will be added."
-  type = string
-  default = "tf"
-}
-variable "environment" {
-  description = "Environment: prod, staging, uat, qa, dev, test."
-  type = string
-}
 variable "my_ip" {
   description = "Your work, home, internal IP that will be use for example SSH source."
   type = string
